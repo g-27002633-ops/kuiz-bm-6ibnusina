@@ -1,0 +1,1548 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Misi Pemahaman BM [CYBER-6 IBNU SINA]</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --neon-cyan: #00f3ff;
+            --neon-pink: #ff007f;
+            --neon-yellow: #fcee0a;
+            --cyber-bg: #070b19;
+        }
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #030712;
+            background-image: 
+                radial-gradient(circle at 20% 20%, rgba(0, 243, 255, 0.12) 0%, transparent 45%),
+                radial-gradient(circle at 80% 80%, rgba(255, 0, 127, 0.12) 0%, transparent 45%);
+            margin: 0;
+            padding: 0;
+            overscroll-behavior-y: none;
+        }
+        .font-cyber {
+            font-family: 'Orbitron', sans-serif;
+        }
+        /* Cyber Grid Background Pattern */
+        .cyber-grid-bg {
+            background-size: 26px 26px;
+            background-image: 
+                linear-gradient(to right, rgba(6, 182, 212, 0.09) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(6, 182, 212, 0.09) 1px, transparent 1px);
+        }
+        /* Custom Neon Scrollbar */
+        ::-webkit-scrollbar {
+            width: 5px;
+            height: 5px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(15, 23, 42, 0.9);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #06b6d4;
+            border-radius: 9999px;
+            box-shadow: 0 0 8px #06b6d4;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #ec4899;
+        }
+        .passage-transition {
+            transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .option-card {
+            transition: all 0.18s ease;
+        }
+        .option-card:active {
+            transform: scale(0.985);
+        }
+        .neon-cyan-glow {
+            box-shadow: 0 0 15px rgba(6, 182, 212, 0.35), inset 0 0 10px rgba(6, 182, 212, 0.12);
+        }
+        .neon-pink-glow {
+            box-shadow: 0 0 15px rgba(236, 72, 153, 0.4), inset 0 0 10px rgba(236, 72, 153, 0.15);
+        }
+        .neon-yellow-glow {
+            box-shadow: 0 0 18px rgba(250, 204, 21, 0.45);
+        }
+        @keyframes scanline {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(1000%); }
+        }
+        .scanline-overlay::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(to right, transparent, rgba(0, 243, 255, 0.5), transparent);
+            animation: scanline 6s linear infinite;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body class="flex justify-center items-center min-h-screen text-slate-100 select-none sm:py-3">
+
+    <!-- 9:16 Mobile Smartphone Frame Container -->
+    <div id="app-container" class="w-full max-w-[430px] h-[100dvh] sm:h-[93dvh] sm:max-h-[890px] bg-slate-950 cyber-grid-bg sm:rounded-[34px] sm:shadow-[0_0_50px_rgba(6,182,212,0.28)] sm:border-[4px] sm:border-cyan-500/50 flex flex-col overflow-hidden relative scanline-overlay">
+
+        <!-- =================================================================== -->
+        <!-- MUKA DEPAN (CYBERPUNK COVER SCREEN) UNTUK MURID ISI NAMA            -->
+        <!-- =================================================================== -->
+        <div id="cover-screen" class="absolute inset-0 z-40 bg-slate-950 cyber-grid-bg flex flex-col justify-between p-5 overflow-y-auto transition-all duration-300">
+            
+            <!-- Top Bar on Cover Screen -->
+            <div class="flex items-center justify-between">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-950/90 border border-cyan-500/50 text-[10px] font-cyber tracking-wider text-cyan-300 uppercase">
+                    <span class="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
+                    <span>SISTEM ONLINE // v2.6</span>
+                </div>
+                <!-- Panel Guru tersembunyi untuk murid, boleh diakses melalui pintasan konsol jika perlu -->
+                <button onclick="openTeacherModal()" class="hidden px-3 py-1.5 rounded-xl bg-slate-900 hover:bg-slate-800 border border-fuchsia-500/40 text-fuchsia-300 text-xs font-bold items-center gap-1.5 transition">
+                    <span>⚙️</span>
+                    <span>Panel Guru</span>
+                </button>
+            </div>
+
+            <!-- Center Hero & Login Card -->
+            <div class="my-auto py-4 space-y-5">
+                <!-- Cyber Title Header -->
+                <div class="text-center space-y-2">
+                    <div class="w-16 h-16 mx-auto rounded-2xl bg-gradient-to-br from-cyan-500/20 via-slate-900 to-fuchsia-500/20 border-2 border-cyan-400 flex items-center justify-center text-3xl neon-cyan-glow">
+                        ⚡
+                    </div>
+                    <div class="inline-block bg-yellow-400 text-slate-950 font-cyber font-black text-[11px] px-3 py-0.5 rounded-md tracking-widest uppercase shadow-md">
+                        TAHUN 6 IBNU SINA
+                    </div>
+                    <h1 class="font-cyber text-2xl font-black tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-white to-fuchsia-400 leading-tight">
+                        MISI PEMAHAMAN<br>BAHASA MELAYU
+                    </h1>
+                    <p class="text-xs text-slate-400 max-w-[300px] mx-auto leading-relaxed">
+                        15 Petikan Ringkas • 15 Soalan Pemahaman • Penghantaran Automatik ke Google Sheets Cikgu
+                    </p>
+                </div>
+
+                <!-- Cyber Form Card -->
+                <div class="bg-slate-900/90 backdrop-blur-md border-2 border-cyan-500/60 rounded-2xl p-4 space-y-3.5 neon-cyan-glow relative">
+                    <div class="flex items-center justify-between border-b border-slate-800 pb-2">
+                        <span class="font-cyber text-[11px] font-bold text-cyan-300 tracking-wider uppercase">
+                            🪪 Pendaftaran Ejen Murid
+                        </span>
+                        <span id="cover-sheet-badge" class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-950 text-emerald-300 border border-emerald-500/40 flex items-center gap-1">
+                            <span id="cover-sheet-dot" class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                            <span id="cover-sheet-text">Sheets Tersambung</span>
+                        </span>
+                    </div>
+
+                    <!-- Input Nama Penuh -->
+                    <div>
+                        <label for="cover-student-name" class="block text-xs font-bold text-cyan-200 mb-1.5">
+                            NAMA PENUH MURID <span class="text-fuchsia-400">*</span>
+                        </label>
+                        <input type="text" id="cover-student-name" placeholder="Taip nama penuh anda di sini..."
+                            class="w-full px-3.5 py-3 text-sm rounded-xl bg-slate-950 border-2 border-slate-700 focus:border-cyan-400 text-white placeholder-slate-500 outline-none transition font-bold shadow-inner">
+                    </div>
+
+                    <!-- Pilihan Kelas -->
+                    <div class="grid grid-cols-2 gap-2.5">
+                        <div>
+                            <label for="cover-student-class" class="block text-[11px] font-bold text-cyan-200 mb-1">
+                                KELAS UTAMA
+                            </label>
+                            <select id="cover-student-class" class="w-full px-3 py-2.5 text-xs rounded-xl bg-slate-950 border-2 border-cyan-500/50 focus:border-cyan-400 text-cyan-300 font-extrabold outline-none">
+                                <option value="6 Ibnu Sina" selected>6 Ibnu Sina</option>
+                                <option value="6 Ibnu Khaldun">6 Ibnu Khaldun</option>
+                                <option value="6 Ibnu Rushd">6 Ibnu Rushd</option>
+                                <option value="6 Al-Farabi">6 Al-Farabi</option>
+                                <option value="Lain-lain">Lain-lain</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="cover-custom-class" class="block text-[11px] font-bold text-slate-400 mb-1">
+                                KELAS LAIN (JIKA ADA)
+                            </label>
+                            <input type="text" id="cover-custom-class" placeholder="Pilihan tambahan"
+                                class="w-full px-3 py-2.5 text-xs rounded-xl bg-slate-950 border-2 border-slate-800 focus:border-fuchsia-400 text-white placeholder-slate-600 outline-none font-semibold">
+                        </div>
+                    </div>
+
+                    <!-- Info Auto Sheets -->
+                    <div class="bg-slate-950/90 border border-slate-800 rounded-xl p-2.5 flex items-center gap-2.5 text-[11px] text-slate-300">
+                        <span class="text-lg">🚀</span>
+                        <p class="leading-snug">
+                            Markah & jawapan anda akan <strong class="text-cyan-300">diisi secara automatik</strong> ke dalam Google Sheets sebaik sahaja anda menekan butang <strong>Hantar</strong>.
+                        </p>
+                    </div>
+
+                    <!-- Mula Misi Button -->
+                    <button onclick="startCyberQuiz()" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-cyan-400 via-teal-300 to-fuchsia-500 hover:from-cyan-300 hover:to-fuchsia-400 text-slate-950 font-cyber font-black text-sm tracking-wider uppercase shadow-lg neon-cyan-glow active:scale-95 transition flex items-center justify-center gap-2">
+                        <span>MULA MISI SEKARANG</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Bottom Footer Info -->
+            <div class="text-center text-[11px] text-slate-500 font-medium">
+                MODUL INTERAKTIF BAHASA MELAYU • TAHUN 6 IBNU SINA
+            </div>
+        </div>
+
+        <!-- =================================================================== -->
+        <!-- TOP APP BAR (CYBERPUNK HUD HEADER)                                  -->
+        <!-- =================================================================== -->
+        <header class="bg-slate-900/95 border-b-2 border-cyan-500/40 text-white px-3.5 py-2.5 shadow-lg z-30 shrink-0">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                    <button onclick="openCoverScreen()" title="Tukar Nama / Muka Depan" class="w-9 h-9 rounded-xl bg-cyan-950 border border-cyan-400/60 flex items-center justify-center text-base shadow-inner hover:bg-cyan-900 active:scale-95 transition">
+                        ⚡
+                    </button>
+                    <div>
+                        <div class="flex items-center gap-1.5">
+                            <span class="font-cyber text-[9px] font-black uppercase tracking-wider bg-yellow-400 text-slate-950 px-2 py-0.5 rounded">6 IBNU SINA</span>
+                            <span id="sheet-status-badge" class="text-[10px] font-bold bg-slate-800 border border-slate-700 px-2 py-0.5 rounded-full flex items-center gap-1">
+                                <span id="sheet-dot" class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                                <span id="sheet-status-text" class="text-emerald-300">Sheets Aktif</span>
+                            </span>
+                        </div>
+                        <h1 class="font-cyber text-xs font-extrabold tracking-wide text-cyan-300 mt-0.5">PEMAHAMAN BM // 15 PETIKAN</h1>
+                    </div>
+                </div>
+
+                <!-- Progress Pill & Hidden Teacher Settings Trigger -->
+                <div class="flex items-center gap-1.5">
+                    <div class="bg-slate-950 border border-cyan-500/40 px-2.5 py-1 rounded-xl text-right">
+                        <span class="text-[9px] text-cyan-400 uppercase font-bold block leading-none">Dijawab</span>
+                        <span id="progress-counter" class="font-cyber text-xs font-extrabold text-white">0 / 15</span>
+                    </div>
+                    <!-- Butang tetapan guru disembunyikan untuk murid -->
+                    <button onclick="openTeacherModal()" title="Tetapan Guru" class="hidden p-2 rounded-xl bg-slate-800 border border-fuchsia-500/40 text-fuchsia-300 hover:bg-slate-700 transition">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Student Bar & Neon Progress Bar -->
+            <div class="mt-2 flex items-center justify-between text-[11px] bg-slate-950/90 border border-slate-800 px-2.5 py-1 rounded-lg">
+                <div class="truncate flex-1 pr-2">
+                    <span class="text-slate-400">Ejen:</span>
+                    <span id="header-student-display" class="font-bold text-cyan-300">Belum diisi</span>
+                </div>
+                <button onclick="openCoverScreen()" class="text-[10px] font-extrabold bg-fuchsia-500/20 border border-fuchsia-400/60 text-fuchsia-300 px-2 py-0.5 rounded-md shrink-0 hover:bg-fuchsia-500/30">
+                    Tukar Nama
+                </button>
+            </div>
+
+            <div class="w-full bg-slate-950 h-1.5 rounded-full mt-2 overflow-hidden border border-slate-800">
+                <div id="progress-bar" class="bg-gradient-to-r from-cyan-400 via-fuchsia-500 to-yellow-400 h-full w-0 transition-all duration-300 rounded-full"></div>
+            </div>
+        </header>
+
+        <!-- QUESTION NUMBER BAR (1 - 15) -->
+        <div class="bg-slate-900/90 border-b border-slate-800 px-3 py-2 shrink-0 z-20">
+            <div class="flex items-center justify-between mb-1.5">
+                <span class="font-cyber text-[9px] font-bold uppercase tracking-wider text-slate-400">Pilih Zon Soalan (1 Petikan = 1 Soalan)</span>
+                <span id="current-q-indicator" class="font-cyber text-[10px] font-extrabold text-cyan-300">SOALAN 1 / 15</span>
+            </div>
+            <div id="question-nav-grid" class="grid gap-1 overflow-x-auto pb-0.5" style="grid-template-columns: repeat(15, minmax(24px, 1fr));">
+                <!-- Populated via JS -->
+            </div>
+        </div>
+
+        <!-- TOP SECTION: DYNAMIC SHORT PASSAGE FOR CURRENT QUESTION -->
+        <section id="passage-section" class="bg-slate-900/95 border-b-2 border-cyan-500/50 shadow-lg z-20 shrink-0 flex flex-col">
+            <!-- Passage Control Header -->
+            <div class="px-3.5 py-1.5 bg-slate-950 flex items-center justify-between border-b border-slate-800">
+                <div class="flex items-center gap-1.5 truncate pr-2">
+                    <span id="passage-badge" class="font-cyber text-[9px] font-extrabold bg-cyan-400 text-slate-950 px-2 py-0.5 rounded uppercase tracking-wider shrink-0">
+                        PETIKAN 1
+                    </span>
+                    <span id="passage-type-badge" class="text-[11px] font-bold text-cyan-200 truncate">
+                        Cerita Pendek
+                    </span>
+                </div>
+
+                <!-- Font Size & Height Controls -->
+                <div class="flex items-center gap-1 shrink-0">
+                    <button onclick="changeFontSize(-1)" title="Kecilkan Tulisan" class="px-2 py-0.5 text-xs font-bold bg-slate-900 text-cyan-300 rounded-lg border border-cyan-500/40 active:scale-95">
+                        A-
+                    </button>
+                    <button onclick="changeFontSize(1)" title="Besarkan Tulisan" class="px-2 py-0.5 text-xs font-bold bg-slate-900 text-cyan-300 rounded-lg border border-cyan-500/40 active:scale-95">
+                        A+
+                    </button>
+                    <button id="toggle-passage-btn" onclick="cyclePassageSize()" class="ml-0.5 px-2 py-0.5 text-[10px] font-bold bg-fuchsia-600 text-white rounded-lg border border-fuchsia-400 hover:bg-fuchsia-500 active:scale-95">
+                        <span id="passage-size-label">Sederhana</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Scrollable Reading Passage Body -->
+            <div id="passage-body" class="passage-transition overflow-y-auto px-3.5 py-2.5 leading-relaxed select-text" style="max-height: 29dvh; font-size: 14px;">
+                <div id="dynamic-passage-container" class="bg-slate-950/90 p-3 rounded-2xl border border-cyan-500/30 shadow-inner text-slate-100">
+                    <!-- Dynamic passage injected here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- BOTTOM SECTION: ACTIVE QUESTION & OPTIONS -->
+        <main id="questions-scroll-area" class="flex-1 overflow-y-auto px-3.5 py-3 space-y-3 pb-6">
+
+            <!-- Score Banner (Hidden until submitted) -->
+            <div id="result-summary-card" class="hidden bg-slate-900 border-2 border-cyan-400 text-white rounded-2xl p-3.5 neon-cyan-glow space-y-2.5">
+                <div class="flex items-center justify-between gap-2">
+                    <div>
+                        <span id="result-grade-badge" class="font-cyber inline-block text-[9px] font-black uppercase tracking-wider bg-yellow-400 text-slate-950 px-2.5 py-0.5 rounded">KEPUTUSAN MISI</span>
+                        <h3 id="result-student-display" class="text-sm font-extrabold text-cyan-300 mt-1">Tahniah!</h3>
+                        <p id="result-sync-status" class="text-[11px] text-slate-300 mt-0.5">Menghantar markah secara automatik ke Google Sheets...</p>
+                    </div>
+                    <div class="bg-slate-950 border-2 border-fuchsia-500 rounded-2xl px-3.5 py-2 text-center shrink-0 neon-pink-glow">
+                        <span class="font-cyber text-[9px] font-bold uppercase text-fuchsia-300 block">MARKAH</span>
+                        <span id="result-score-number" class="font-cyber text-xl font-black text-cyan-300">15/15</span>
+                        <span id="result-percentage" class="text-[11px] font-extrabold text-yellow-400 block">100%</span>
+                    </div>
+                </div>
+
+                <div class="flex flex-wrap gap-2 pt-2 border-t border-slate-800">
+                    <button id="retry-sync-btn" onclick="retryLastSheetSync()" class="hidden py-1.5 px-3 bg-emerald-500 hover:bg-emerald-400 text-slate-950 rounded-xl text-xs font-extrabold items-center justify-center gap-1 active:scale-95 transition">
+                        ☁️ Hantar Semula ke Sheets
+                    </button>
+                    <button onclick="copyResultSummary()" class="flex-1 py-1.5 px-3 bg-slate-800 hover:bg-slate-700 border border-cyan-500/40 text-cyan-300 rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 active:scale-95 transition">
+                        📋 Salin Slip
+                    </button>
+                    <button onclick="resetQuiz()" class="py-1.5 px-3 bg-yellow-400 hover:bg-yellow-300 text-slate-950 rounded-xl text-xs font-extrabold flex items-center justify-center gap-1 active:scale-95 transition">
+                        🔄 Misi Baharu
+                    </button>
+                </div>
+            </div>
+
+            <!-- Single Active Question Container -->
+            <div id="questions-container">
+                <!-- Populated dynamically by JavaScript for currentQuestionIndex -->
+            </div>
+
+        </main>
+
+        <!-- STICKY BOTTOM NAVIGATION & SUBMIT BAR -->
+        <footer class="bg-slate-900/95 backdrop-blur-md border-t border-cyan-500/30 px-3.5 py-2.5 z-30 shrink-0 flex items-center justify-between gap-2">
+            <button id="prev-btn" onclick="navigateQuestion(-1)" class="px-3 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 font-bold text-xs active:scale-95 transition flex items-center gap-1 disabled:opacity-35 disabled:pointer-events-none">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+                </svg>
+                <span>Sebelum</span>
+            </button>
+
+            <button id="next-btn" onclick="navigateQuestion(1)" class="flex-1 py-2.5 px-4 rounded-xl bg-cyan-500/20 hover:bg-cyan-500/30 border border-cyan-400 text-cyan-300 font-extrabold text-xs active:scale-95 transition flex items-center justify-center gap-1.5">
+                <span>Soalan Seterusnya</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                </svg>
+            </button>
+
+            <button id="submit-btn" onclick="handleSubmitQuiz()" class="px-4 py-2.5 rounded-xl bg-gradient-to-r from-yellow-400 to-amber-500 hover:from-yellow-300 hover:to-amber-400 text-slate-950 font-cyber font-black text-xs neon-yellow-glow active:scale-95 transition flex items-center gap-1.5">
+                <span>HANTAR</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                </svg>
+            </button>
+        </footer>
+
+        <!-- CUSTOM MESSAGE / TOAST MODAL (NO ALERT) -->
+        <div id="toast-notification" class="fixed top-4 left-1/2 -translate-x-1/2 z-50 hidden max-w-[380px] w-[90%] bg-slate-900 text-white px-4 py-3 rounded-2xl shadow-2xl border-2 border-cyan-400 flex items-center gap-3 transition-all">
+            <span id="toast-icon" class="text-xl">⚡</span>
+            <p id="toast-message" class="text-xs font-semibold flex-1 leading-snug text-cyan-100"></p>
+            <button onclick="hideToast()" class="text-slate-400 hover:text-white text-xs font-bold px-1.5 py-0.5">✕</button>
+        </div>
+
+        <!-- TEACHER GOOGLE SHEETS SETUP & RECORDS MODAL (TERSEMBUNYI UNTUK MURID) -->
+        <div id="teacher-modal" class="fixed inset-0 bg-slate-950/85 backdrop-blur-sm z-50 hidden flex items-end sm:items-center justify-center p-0 sm:p-4">
+            <div class="bg-slate-900 w-full max-w-[420px] max-h-[90dvh] rounded-t-3xl sm:rounded-3xl shadow-2xl flex flex-col overflow-hidden border-2 border-fuchsia-500/60 text-slate-100">
+                <!-- Modal Header -->
+                <div class="bg-slate-950 px-4 py-3.5 flex items-center justify-between shrink-0 border-b border-slate-800">
+                    <div class="flex items-center gap-2">
+                        <span class="text-lg">📊</span>
+                        <div>
+                            <h3 class="font-cyber text-xs font-extrabold text-fuchsia-400 uppercase">Panel Guru & Auto-Sheets</h3>
+                            <p class="text-[11px] text-slate-400">Tahun 6 Ibnu Sina • Auto-Rekod Markah Murid</p>
+                        </div>
+                    </div>
+                    <button onclick="closeTeacherModal()" class="w-8 h-8 rounded-full bg-slate-800 hover:bg-slate-700 flex items-center justify-center text-sm font-bold text-slate-300">✕</button>
+                </div>
+
+                <!-- Modal Tabs -->
+                <div class="grid grid-cols-3 bg-slate-950 p-1 mx-4 mt-3 rounded-xl shrink-0 text-xs font-bold border border-slate-800">
+                    <button id="tab-btn-link" onclick="switchTeacherTab('link')" class="py-1.5 rounded-lg bg-cyan-500 text-slate-950 font-extrabold">1. Pautan URL</button>
+                    <button id="tab-btn-code" onclick="switchTeacherTab('code')" class="py-1.5 rounded-lg text-slate-400 hover:text-white">2. Kod Script</button>
+                    <button id="tab-btn-records" onclick="switchTeacherTab('records')" class="py-1.5 rounded-lg text-slate-400 hover:text-white">3. Rekod (<span id="local-record-count">0</span>)</button>
+                </div>
+
+                <!-- Modal Content Scroll -->
+                <div class="p-4 overflow-y-auto space-y-4 flex-1 text-xs text-slate-300">
+
+                    <!-- TAB 1: URL SETUP -->
+                    <div id="teacher-tab-link" class="space-y-3">
+                        <div class="bg-cyan-950/60 border border-cyan-500/40 rounded-xl p-3 text-cyan-100 space-y-1">
+                            <p class="font-bold text-cyan-300">⚡ Auto-Pengisian Google Sheets:</p>
+                            <p class="leading-relaxed">URL Google Apps Script anda telah dipasang secara rasmi dalam kod ini. Setiap kali murid <strong>6 Ibnu Sina</strong> menekan <strong>HANTAR</strong>, sistem akan mengisi markah terus ke Google Sheets Cikgu.</p>
+                        </div>
+
+                        <div>
+                            <label class="block font-bold text-cyan-300 mb-1">Google Apps Script Web App URL:</label>
+                            <input type="url" id="sheets-webhook-url" placeholder="https://script.google.com/macros/s/AKfycb.../exec" 
+                                class="w-full px-3 py-2.5 rounded-xl border border-slate-700 focus:border-cyan-400 outline-none text-xs font-mono bg-slate-950 text-cyan-200">
+                        </div>
+
+                        <div class="flex gap-2 pt-1">
+                            <button onclick="saveSheetsUrl()" class="flex-1 py-2.5 bg-cyan-400 hover:bg-cyan-300 text-slate-950 font-extrabold rounded-xl active:scale-95 transition">
+                                💾 Simpan URL Sheets
+                            </button>
+                            <button onclick="testSheetsConnection()" class="py-2.5 px-3 bg-fuchsia-600 hover:bg-fuchsia-500 text-white font-bold rounded-xl active:scale-95 transition">
+                                🧪 Uji Auto-Isi
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- TAB 2: GOOGLE APPS SCRIPT CODE -->
+                    <div id="teacher-tab-code" class="hidden space-y-3">
+                        <ol class="list-decimal list-inside space-y-1.5 text-slate-300 bg-slate-950 p-3 rounded-xl border border-slate-800 leading-relaxed">
+                            <li>Buka <strong>Google Sheets</strong> di Google Drive anda.</li>
+                            <li>Klik menu <strong>Extensions &rarr; Apps Script</strong>.</li>
+                            <li>Tampal kod di bawah, kemudian tekan ikon <strong>Save (💾)</strong>.</li>
+                            <li>Klik <strong>Deploy &rarr; New deployment</strong> (Pilih jenis: <strong>Web app</strong>).</li>
+                            <li>Execute as: <strong>Me</strong>. Who has access: <strong>Anyone</strong>.</li>
+                        </ol>
+
+                        <div class="relative">
+                            <div class="flex items-center justify-between bg-slate-800 text-slate-200 px-3 py-1.5 rounded-t-xl">
+                                <span class="font-mono text-[11px] text-cyan-300">Code.gs</span>
+                                <button onclick="copyAppsScriptCode()" class="bg-cyan-400 hover:bg-cyan-300 text-slate-950 font-extrabold px-2.5 py-0.5 rounded-md text-[11px]">
+                                    Salin Kod
+                                </button>
+                            </div>
+                            <pre id="gas-code-block" class="bg-slate-950 text-cyan-300 p-3 rounded-b-xl border border-slate-800 overflow-x-auto font-mono text-[10.5px] leading-relaxed select-all">function doPost(e) {
+  var lock = LockService.getScriptLock();
+  lock.tryLock(10000);
+  try {
+    var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+    var raw = e.postData ? e.postData.contents : "{}";
+    var data = JSON.parse(raw);
+
+    if (sheet.getLastRow() === 0) {
+      var headers = ["Tarikh & Masa", "Nama Murid", "Kelas", "Markah", "Peratus (%)"];
+      for (var i = 1; i &lt;= 15; i++) { headers.push("S" + i); }
+      sheet.appendRow(headers);
+    }
+
+    var row = [
+      new Date(),
+      data.nama || "Tanpa Nama",
+      data.kelas || "6 Ibnu Sina",
+      (data.markah !== undefined ? data.markah : 0) + " / 15",
+      (data.peratus !== undefined ? data.peratus : 0) + "%"
+    ];
+
+    var jawapan = data.jawapan || [];
+    for (var j = 0; j &lt; 15; j++) {
+      row.push(jawapan[j] || "-");
+    }
+
+    sheet.appendRow(row);
+    return ContentService.createTextOutput(JSON.stringify({status: "success"}))
+      .setMimeType(ContentService.MimeType.JSON);
+  } finally {
+    lock.releaseLock();
+  }
+}</pre>
+                        </div>
+                    </div>
+
+                    <!-- TAB 3: LOCAL SUBMISSIONS & CSV EXPORT -->
+                    <div id="teacher-tab-records" class="hidden space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="font-bold text-cyan-300">Rekod Peranti Ini:</span>
+                            <div class="flex gap-1.5">
+                                <button onclick="exportRecordsCSV()" class="px-2.5 py-1 bg-cyan-400 text-slate-950 font-extrabold rounded-lg text-[11px]">
+                                    ⬇️ Muat Turun CSV
+                                </button>
+                                <button onclick="clearLocalRecords()" class="px-2 py-1 bg-rose-950 text-rose-300 border border-rose-500/40 font-bold rounded-lg text-[11px]">
+                                    🗑️ Padam
+                                </button>
+                            </div>
+                        </div>
+
+                        <div id="local-records-list" class="space-y-2 max-h-60 overflow-y-auto">
+                            <!-- Populated by JS -->
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // ============================================================================
+        // TETAPAN GOOGLE SHEETS ANDA (TAHUN 6 IBNU SINA)
+        // ============================================================================
+        const DEFAULT_SHEETS_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwT8Y89n7t1VdZ2c0jM1p3X5K9L6H8F2d4E7bA/exec"; 
+        const DEFAULT_CLASS_NAME = "6 Ibnu Sina";
+
+        // ============================================================================
+        // DATA 15 SOALAN PEMAHAMAN BAHASA MELAYU TAHUN 6
+        // ============================================================================
+        const QUIZ_QUESTIONS = [
+            {
+                id: 1,
+                passageType: "Cerita Pendek",
+                passageTitle: "Damia yang Prihatin",
+                passageHtml: `
+                    <p class="text-justify text-slate-200">
+                        Setiap petang, Damia akan membantu ibunya menyiram pokok-pokok bunga di halaman rumah. Selepas itu, dia akan mengumpulkan botol plastik dan tin minuman kosong untuk dimasukkan ke dalam beg kitar semula. Ibunya amat bangga akan sikap Damia yang <strong class="text-cyan-300 underline decoration-cyan-400">ringan tulang</strong> dan cinta akan kebersihan alam sekitar.
+                    </p>
+                `,
+                category: "Simpulan Bahasa",
+                question: "Apakah maksud simpulan bahasa \"ringan tulang\" berdasarkan petikan di atas?",
+                options: [
+                    "A. Mempunyai tulang yang lembut dan ringan",
+                    "B. Rajin bekerja dan suka membantu",
+                    "C. Cepat berasa letih apabila membuat kerja",
+                    "D. Suka bermain di halaman rumah pada waktu petang"
+                ],
+                correctIndex: 1,
+                explanation: "Simpulan bahasa 'ringan tulang' bermaksud orang yang rajin berusaha dan suka menolong orang lain."
+            },
+            {
+                id: 2,
+                passageType: "Pengumuman Sekolah",
+                passageTitle: "Kempen Pengumpulan Bahan Kitar Semula",
+                passageHtml: `
+                    <div class="bg-slate-900/90 p-2.5 rounded-xl border border-cyan-500/40 text-xs space-y-1 text-slate-200">
+                        <p class="font-extrabold text-cyan-300 uppercase">📢 PENGUMUMAN KELAB ALAM SEKITAR</p>
+                        <p>Semua murid <strong>Tahun 6 Ibnu Sina</strong> dan kelas-kelas Tahap Dua diminta membawa surat khabar lama dan botol plastik pada hari <strong class="text-yellow-300">Rabu (21 Oktober 2026)</strong>. Pengumpulan akan dijalankan di <strong class="text-cyan-300">Astaka Sekolah</strong> bermula pukul <strong>7:20 pagi hingga 8:00 pagi</strong>. Kelas yang mengumpulkan bahan paling berat akan menerima hadiah piala pusingan.</p>
+                    </div>
+                `,
+                category: "Pemahaman Teks",
+                question: "Di manakah murid-murid perlu menyerahkan bahan kitar semula yang dibawa?",
+                options: [
+                    "A. Di bilik guru disiplin",
+                    "B. Di Astaka Sekolah",
+                    "C. Di kantin sekolah",
+                    "D. Di dalam makmal sains"
+                ],
+                correctIndex: 1,
+                explanation: "Pengumuman menyatakan dengan jelas bahawa pengumpulan akan dijalankan di Astaka Sekolah."
+            },
+            {
+                id: 3,
+                passageType: "Dialog Ringkas",
+                passageTitle: "Perbualan di Kantin",
+                passageHtml: `
+                    <div class="space-y-1.5 text-xs text-slate-200">
+                        <p><strong class="text-cyan-300">Hakim:</strong> Mengapakah kamu membawa bekas makanan dan botol air sendiri ke sekolah, Mei Ling?</p>
+                        <p><strong class="text-fuchsia-300">Mei Ling:</strong> Ibu saya menggalakkan saya berbuat demikian supaya kita dapat mengurangkan penggunaan plastik sekali guna di kantin.</p>
+                        <p><strong class="text-cyan-300">Hakim:</strong> Wah, bagusnya tindakan kamu! Esok saya juga mahu membawa bekas makanan sendiri.</p>
+                    </div>
+                `,
+                category: "Pemahaman Dialog",
+                question: "Mengapakah Mei Ling membawa bekas makanan sendiri dari rumah?",
+                options: [
+                    "A. Kerana makanan di kantin sekolah sudah habis dijual",
+                    "B. Untuk mengurangkan penggunaan plastik sekali guna",
+                    "C. Kerana disuruh oleh guru kelasnya",
+                    "D. Untuk menjual makanan tersebut kepada Hakim"
+                ],
+                correctIndex: 1,
+                explanation: "Mei Ling menyatakan tujuannya adalah untuk mengurangkan penggunaan plastik sekali guna di kantin."
+            },
+            {
+                id: 4,
+                passageType: "Pantun Empat Kerat",
+                passageTitle: "Pantun Alam Sekitar",
+                passageHtml: `
+                    <div class="italic bg-slate-900 p-2.5 rounded-xl border border-fuchsia-500/40 text-center space-y-0.5 text-slate-200">
+                        <p>Pergi ke pekan membeli laksa,</p>
+                        <p>Singgah sebentar di tepi muara;</p>
+                        <p class="font-bold text-cyan-300 not-italic">Sungai bersih indah sentiasa,</p>
+                        <p class="font-bold text-cyan-300 not-italic">Hidupan air kekal terpelihara.</p>
+                    </div>
+                `,
+                category: "Pemahaman Puisi",
+                question: "Apakah maksud rangkap pantun di atas?",
+                options: [
+                    "A. Kita hendaklah membeli laksa ketika singgah di muara sungai",
+                    "B. Apabila sungai dijaga dengan bersih, hidupan air akan selamat dan terpelihara",
+                    "C. Hidupan air hanya boleh hidup di kawasan muara yang cetek",
+                    "D. Kita perlu memancing ikan di sungai pada waktu petang"
+                ],
+                correctIndex: 1,
+                explanation: "Baris maksud pantun (baris ke-3 dan ke-4) menekankan bahawa sungai yang bersih memastikan hidupan air kekal terpelihara."
+            },
+            {
+                id: 5,
+                passageType: "Catatan Harian (Diari)",
+                passageTitle: "Catatan Hari Sabtu Faris",
+                passageHtml: `
+                    <div class="text-xs space-y-1 text-slate-200">
+                        <p class="font-bold text-yellow-400">Sabtu, 17 Oktober 2026</p>
+                        <p><strong>8:30 pagi:</strong> Aku dan ayah menanam <strong class="text-cyan-300">lima ______ anak pokok cili</strong> di belakang rumah menggunakan tanah organik.</p>
+                        <p><strong>10:00 pagi:</strong> Kami menyusun pasu-pasu tersebut di tepi pagar supaya mendapat cahaya matahari yang mencukupi.</p>
+                    </div>
+                `,
+                category: "Tatabahasa (Penjodoh Bilangan)",
+                question: "Pilih penjodoh bilangan yang paling tepat untuk mengisi tempat kosong dalam catatan di atas.",
+                options: [
+                    "A. kuntum",
+                    "B. helai",
+                    "C. pohon / pokok",
+                    "D. biji"
+                ],
+                correctIndex: 2,
+                explanation: "Penjodoh bilangan yang tepat bagi 'anak pokok cili' ialah pohon atau pokok."
+            },
+            {
+                id: 6,
+                passageType: "Berita Ringkas",
+                passageTitle: "Gotong-royong Perdana Kampung Seri Maju",
+                passageHtml: `
+                    <p class="text-justify text-slate-200">
+                        <strong class="text-cyan-300">BATU PAHAT, Ahad</strong> – Seramai 120 orang penduduk Kampung Seri Maju telah menyertai aktiviti gotong-royong membersihkan balai raya dan kawasan taman permainan. Mereka bekerjasama <strong class="text-yellow-300 underline">bagai aur dengan tebing</strong> sejak pukul 8:00 pagi sehingga semua longkang yang tersumbat kembali bersih.
+                    </p>
+                `,
+                category: "Peribahasa",
+                question: "Peribahasa \"bagai aur dengan tebing\" dalam petikan berita di atas membawa maksud...",
+                options: [
+                    "A. Hidup saling membantu dan bekerjasama antara satu sama lain",
+                    "B. Membuat sesuatu pekerjaan tanpa perancangan rapi",
+                    "C. Berbincang untuk memilih ketua kampung yang baharu",
+                    "D. Menanam pokok buluh di sepanjang tebing sungai"
+                ],
+                correctIndex: 0,
+                explanation: "Peribahasa 'bagai aur dengan tebing' bermaksud masyarakat yang hidup tolong-menolong dan bermuafakat."
+            },
+            {
+                id: 7,
+                passageType: "Poster Maklumat",
+                passageTitle: "Kenali Warna Tong Kitar Semula",
+                passageHtml: `
+                    <div class="grid grid-cols-3 gap-1.5 text-center text-[11px]">
+                        <div class="bg-blue-950/80 border border-blue-400/50 p-2 rounded-lg text-blue-100">
+                            <span class="font-extrabold text-blue-300 block">🔵 TONG BIRU</span>
+                            <span>Kertas, kotak, surat khabar</span>
+                        </div>
+                        <div class="bg-amber-950/80 border border-amber-500/50 p-2 rounded-lg text-amber-100">
+                            <span class="font-extrabold text-amber-300 block">🟤 TONG COKLAT</span>
+                            <span>Semua jenis botol kaca</span>
+                        </div>
+                        <div class="bg-orange-950/80 border border-orange-400/50 p-2 rounded-lg text-orange-100">
+                            <span class="font-extrabold text-orange-300 block">🟠 TONG JINGGA</span>
+                            <span>Tin aluminium, keluli & plastik</span>
+                        </div>
+                    </div>
+                `,
+                category: "Pemahaman Maklumat",
+                question: "Irfan ingin membuang beberapa biji botol kicap kaca yang telah kosong. Ke dalam tong manakah dia patut memasukkan botol tersebut?",
+                options: [
+                    "A. Tong Biru",
+                    "B. Tong Coklat",
+                    "C. Tong Jingga",
+                    "D. Tong Hitam"
+                ],
+                correctIndex: 1,
+                explanation: "Berdasarkan poster maklumat, semua jenis barangan atau botol kaca perlu dimasukkan ke dalam Tong Coklat."
+            },
+            {
+                id: 8,
+                passageType: "Surat Kiriman Tidak Rasmi",
+                passageTitle: "Petikan Surat daripada Sepupu",
+                passageHtml: `
+                    <p class="text-justify text-slate-200">
+                        ...Tujuan saya menulis warkah ini adalah untuk menceritakan pengalaman saya melawat ke Taman Negara Endau-Rompin pada cuti penggal yang lalu. Udara di dalam hutan simpan itu sungguh <strong class="text-cyan-300 underline">nyaman</strong> kerana dikelilingi pohon-pohon hijau yang rendang dan air terjun yang jernih.
+                    </p>
+                `,
+                category: "Kosa Kata (Sinonim)",
+                question: "Apakah perkataan seerti (sinonim) bagi perkataan \"nyaman\" dalam petikan surat di atas?",
+                options: [
+                    "A. Segar",
+                    "B. Bising",
+                    "C. Kotor",
+                    "D. Hangat"
+                ],
+                correctIndex: 0,
+                explanation: "Perkataan 'nyaman' bagi udara bermaksud segar, bersih dan menyelesakan."
+            },
+            {
+                id: 9,
+                passageType: "Petikan Cerita",
+                passageTitle: "Taman Sains SK Permata",
+                passageHtml: `
+                    <p class="text-justify text-slate-200">
+                        Dahulu, kawasan di tepi pagar SK Permata kelihatan agak <strong class="text-fuchsia-400 underline">usang</strong> dan dipenuhi lalang. Namun begitu, selepas murid-murid <strong>Tahun 6 Ibnu Sina</strong> mengecat semula pagar kayu dan menanam pelbagai jenis pokok bunga kertas, kawasan itu berubah menjadi taman yang amat indah.
+                    </p>
+                `,
+                category: "Kosa Kata (Antonim)",
+                question: "Pilih perkataan berlawanan (antonim) bagi perkataan \"usang\" dalam petikan tersebut.",
+                options: [
+                    "A. Lama",
+                    "B. Buruk",
+                    "C. Baharu",
+                    "D. Sempit"
+                ],
+                correctIndex: 2,
+                explanation: "'Usang' bermaksud sudah lama atau buruk. Maka perkataan berlawanan (antonim) baginya ialah 'baharu'."
+            },
+            {
+                id: 10,
+                passageType: "Iklan Pertandingan",
+                passageTitle: "Pertandingan Reka Cipta Bahan Terbuang",
+                passageHtml: `
+                    <div class="bg-slate-900 border border-cyan-500/40 p-2.5 rounded-xl text-xs space-y-1 text-slate-200">
+                        <p class="font-extrabold text-yellow-400">🏆 PERTANDINGAN INOVASI KITAR SEMULA 2026</p>
+                        <p>• Terbuka kepada murid <strong class="text-cyan-300">Tahun 4, 5 dan 6</strong> secara berkumpulan (3 orang).</p>
+                        <p>• Setiap kumpulan wajib menghasilkan satu produk berguna daripada botol plastik atau kotak terpakai.</p>
+                        <p>• Tarikh tutup penyertaan: <strong>25 Oktober 2026</strong> (Serahkan borang kepada Cikgu Nabila).</p>
+                    </div>
+                `,
+                category: "Pemahaman Iklan",
+                question: "Pernyataan manakah yang BENAR mengenai pertandingan dalam iklan di atas?",
+                options: [
+                    "A. Pertandingan ini disertai secara individu sahaja",
+                    "B. Murid Tahun 2 dan Tahun 3 dibenarkan menyertai pertandingan ini",
+                    "C. Setiap kumpulan terdiri daripada tiga orang murid Tahap Dua",
+                    "D. Borang penyertaan perlu dihantar selepas 30 Oktober 2026"
+                ],
+                correctIndex: 2,
+                explanation: "Iklan menyatakan pertandingan ini terbuka kepada murid Tahun 4, 5 dan 6 (Tahap Dua) secara berkumpulan seramai 3 orang."
+            },
+            {
+                id: 11,
+                passageType: "Teks Penerangan",
+                passageTitle: "Kebaikan Baja Kompos",
+                passageHtml: `
+                    <p class="text-justify text-slate-200">
+                        Sisa makanan seperti kulit pisang, kulit telur, dan sayur-sayuran layu janganlah dibuang begitu sahaja. Sisa organik ini boleh diproses menjadi <strong class="text-cyan-300">baja kompos</strong>. Penggunaan baja kompos dapat menyuburkan tanaman <strong class="text-yellow-300">______</strong> menjimatkan perbelanjaan membeli baja kimia.
+                    </p>
+                `,
+                category: "Tatabahasa (Kata Hubung)",
+                question: "Pilih kata hubung yang paling sesuai untuk melengkapkan tempat kosong dalam petikan.",
+                options: [
+                    "A. sambil",
+                    "B. tetapi",
+                    "C. di samping",
+                    "D. kerana"
+                ],
+                correctIndex: 2,
+                explanation: "Kata hubung 'di samping' (atau selain) paling tepat untuk menggabungkan dua manfaat serentak."
+            },
+            {
+                id: 12,
+                passageType: "Laporan Ringkas",
+                passageTitle: "Lawatan Sambil Belajar ke Pusat Kitar Semula",
+                passageHtml: `
+                    <p class="text-justify text-slate-200">
+                        Pada 12 Oktober yang lalu, seramai <strong class="text-cyan-300">36 orang murid Tahun 6 Ibnu Sina</strong> bersama-sama <strong class="text-cyan-300">4 orang guru pengiring</strong> telah mengadakan lawatan ke Pusat Kitar Semula Putrajaya. Di sana, para peserta diberi penerangan tentang cara kertas lama dihancurkan dan diproses semula menjadi buku nota baharu.
+                    </p>
+                `,
+                category: "Pemahaman Maklumat",
+                question: "Berapakah jumlah keseluruhan peserta termasuk guru pengiring yang mengikuti lawatan tersebut?",
+                options: [
+                    "A. 32 orang",
+                    "B. 36 orang",
+                    "C. 40 orang",
+                    "D. 44 orang"
+                ],
+                correctIndex: 2,
+                explanation: "36 orang murid + 4 orang guru pengiring = 40 orang peserta keseluruhannya."
+            },
+            {
+                id: 13,
+                passageType: "Pesan Ringkas (Nota)",
+                passageTitle: "Nota Ibu di Atas Meja",
+                passageHtml: `
+                    <div class="bg-slate-900 border-l-4 border-yellow-400 p-2.5 rounded-r-xl text-xs space-y-1 text-slate-200">
+                        <p class="font-bold text-yellow-300">Kepada: Aiman,</p>
+                        <p>Ibu terpaksa ke klinik sebentar untuk membawa adik yang demam. Sebelum Aiman pergi ke latihan bola sepak pada pukul 4:30 petang, pastikan Aiman <strong class="text-cyan-300">menutup suis kipas dan lampu</strong> di dalam bilik tidur supaya tidak membazirkan tenaga elektrik. Terima kasih, sayang.</p>
+                    </div>
+                `,
+                category: "Pemahaman Nota",
+                question: "Apakah pesanan utama ibu kepada Aiman sebelum dia keluar ke latihan bola sepak?",
+                options: [
+                    "A. Membawa adiknya pergi ke klinik",
+                    "B. Menutup suis kipas dan lampu bagi mengelakkan pembaziran elektrik",
+                    "C. Membasuh pakaian sekolah di bilik air",
+                    "D. Membeli ubat demam di farmasi berdekatan"
+                ],
+                correctIndex: 1,
+                explanation: "Ibu berpesan supaya Aiman menutup suis kipas dan lampu di dalam bilik tidur sebelum pergi berlatih bola sepak."
+            },
+            {
+                id: 14,
+                passageType: "Petikan Rencana",
+                passageTitle: "Ancaman Penyu di Lautan",
+                passageHtml: `
+                    <p class="text-justify text-slate-200">
+                        Beg plastik yang hanyut di permukaan laut sering disangka obor-obor oleh penyu. Akibatnya, banyak penyu mati kerana <strong class="text-cyan-300 underline">tertelan</strong> bahan plastik yang tidak dapat dihadamkan oleh perutnya. Oleh itu, pengunjung pantai dilarang membuang sampah sarap ke dalam laut.
+                    </p>
+                `,
+                category: "Tatabahasa (Imbuhan)",
+                question: "Imbuhan awalan \"ter-\" pada perkataan \"tertelan\" dalam petikan di atas membawa maksud perbuatan yang...",
+                options: [
+                    "A. dilakukan secara sengaja",
+                    "B. paling tinggi darjahnya",
+                    "C. tidak sengaja berlaku",
+                    "D. dilakukan berulang-ulang kali"
+                ],
+                correctIndex: 2,
+                explanation: "Penyu menyangka plastik ialah obor-obor, maka 'tertelan' membawa maksud perbuatan yang berlaku secara tidak sengaja."
+            },
+            {
+                id: 15,
+                passageType: "Situasi KBAT",
+                passageTitle: "Kempen Hari Tanpa Beg Plastik",
+                passageHtml: `
+                    <p class="text-justify text-slate-200">
+                        Pasar Raya Harmoni telah melaksanakan "Kempen Hari Tanpa Beg Plastik" pada setiap hujung minggu. Walau bagaimanapun, Puan Salmah terlupa membawa beg kitar semula ketika hendak membayar barang-barang dapur yang dibelinya di kaunter.
+                    </p>
+                `,
+                category: "Kemahiran Berfikir Aras Tinggi (KBAT)",
+                question: "Pada pendapat kamu, apakah langkah paling bijak yang boleh dilakukan oleh Puan Salmah supaya tidak terlupa lagi pada masa hadapan?",
+                options: [
+                    "A. Berhenti membeli barang dapur di pasar raya tersebut",
+                    "B. Menyimpan beberapa helai beg kitar semula yang boleh dilipat di dalam kereta atau beg tangan",
+                    "C. Memarahi juruwang di kaunter pembayaran pasar raya itu",
+                    "D. Membuang semua barang yang telah dipilih di kaunter"
+                ],
+                correctIndex: 1,
+                explanation: "Menyimpan beg kitar semula lipat di dalam kereta atau beg tangan memudahkan pengguna membawanya pada bila-bila masa."
+            }
+        ];
+
+        // ============================================================================
+        // APPLICATION STATE
+        // ============================================================================
+        let userAnswers = new Array(QUIZ_QUESTIONS.length).fill(null);
+        let currentQuestionIndex = 0;
+        let isSubmitted = false;
+        let passageSizeMode = 1; // 0: Ringkas, 1: Sederhana, 2: Luas
+        let currentFontSize = 14;
+        let lastSubmittedPayload = null;
+
+        // ============================================================================
+        // INITIALIZATION
+        // ============================================================================
+        window.addEventListener('DOMContentLoaded', () => {
+            initSheetsUrlConfig();
+            loadSavedStudentInfo();
+            renderAll();
+            renderLocalRecords();
+        });
+
+        function renderAll() {
+            renderQuestionNavigator();
+            renderCurrentPassage();
+            renderCurrentQuestion();
+            updateProgressUI();
+            updateBottomNavButtons();
+        }
+
+        function initSheetsUrlConfig() {
+            const params = new URLSearchParams(window.location.search);
+            const paramSheetUrl = params.get('sheet');
+            if (paramSheetUrl) {
+                localStorage.setItem('bm_6ibnusina_sheets_url', paramSheetUrl.trim());
+            } else if (DEFAULT_SHEETS_WEB_APP_URL && !localStorage.getItem('bm_6ibnusina_sheets_url')) {
+                localStorage.setItem('bm_6ibnusina_sheets_url', DEFAULT_SHEETS_WEB_APP_URL.trim());
+            }
+
+            const savedUrl = getActiveSheetsUrl();
+            const inputEl = document.getElementById('sheets-webhook-url');
+            if (inputEl && savedUrl) {
+                inputEl.value = savedUrl;
+            }
+            updateSheetBadgeUI();
+        }
+
+        function getActiveSheetsUrl() {
+            return (localStorage.getItem('bm_6ibnusina_sheets_url') || DEFAULT_SHEETS_WEB_APP_URL || '').trim();
+        }
+
+        function updateSheetBadgeUI() {
+            const url = getActiveSheetsUrl();
+            const isConnected = url && url.startsWith('https://script.google.com');
+
+            const dot = document.getElementById('sheet-dot');
+            const text = document.getElementById('sheet-status-text');
+            const coverDot = document.getElementById('cover-sheet-dot');
+            const coverText = document.getElementById('cover-sheet-text');
+
+            if (isConnected) {
+                dot.className = 'w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse';
+                text.textContent = 'Sheets Aktif';
+                coverDot.className = 'w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse';
+                coverText.textContent = 'Sheets Tersambung';
+            } else {
+                dot.className = 'w-1.5 h-1.5 rounded-full bg-amber-400';
+                text.textContent = 'Mod Peranti';
+                coverDot.className = 'w-1.5 h-1.5 rounded-full bg-amber-400';
+                coverText.textContent = 'Mod Peranti';
+            }
+        }
+
+        // ============================================================================
+        // MUKA DEPAN (COVER SCREEN) LOGIC
+        // ============================================================================
+        function openCoverScreen() {
+            document.getElementById('cover-screen').classList.remove('hidden');
+        }
+
+        function startCyberQuiz() {
+            const nameInput = document.getElementById('cover-student-name');
+            const classSelect = document.getElementById('cover-student-class');
+            const customClassInput = document.getElementById('cover-custom-class');
+
+            const name = nameInput.value.trim();
+            const kelas = customClassInput.value.trim() || classSelect.value.trim() || DEFAULT_CLASS_NAME;
+
+            if (!name) {
+                showToast("⚠️ Sila taip NAMA PENUH anda di Muka Depan sebelum memulakan misi!", "warning");
+                nameInput.focus();
+                return;
+            }
+
+            localStorage.setItem('bm_6is_student_name', name);
+            localStorage.setItem('bm_6is_student_class', kelas);
+            updateStudentHeaderDisplay();
+
+            document.getElementById('cover-screen').classList.add('hidden');
+            showToast(`⚡ Selamat bertugas, Ejen ${name} (${kelas})!`, "success");
+        }
+
+        function loadSavedStudentInfo() {
+            const savedName = localStorage.getItem('bm_6is_student_name') || '';
+            const savedClass = localStorage.getItem('bm_6is_student_class') || DEFAULT_CLASS_NAME;
+
+            if (savedName) {
+                document.getElementById('cover-student-name').value = savedName;
+            }
+
+            const selectEl = document.getElementById('cover-student-class');
+            const options = Array.from(selectEl.options).map(o => o.value);
+            if (options.includes(savedClass)) {
+                selectEl.value = savedClass;
+            } else {
+                selectEl.value = 'Lain-lain';
+                document.getElementById('cover-custom-class').value = savedClass;
+            }
+            updateStudentHeaderDisplay();
+        }
+
+        function getActiveStudentInfo() {
+            const name = document.getElementById('cover-student-name').value.trim();
+            const kelas = document.getElementById('cover-custom-class').value.trim() || document.getElementById('cover-student-class').value.trim() || DEFAULT_CLASS_NAME;
+            return { name, kelas };
+        }
+
+        function updateStudentHeaderDisplay() {
+            const { name, kelas } = getActiveStudentInfo();
+            const disp = document.getElementById('header-student-display');
+            if (name) {
+                disp.textContent = `${name} (${kelas})`;
+                disp.className = "font-extrabold text-cyan-300";
+            } else {
+                disp.textContent = `Belum diisi • ${kelas}`;
+                disp.className = "font-bold text-slate-400";
+            }
+        }
+
+        // ============================================================================
+        // PASSAGE VIEW CONTROLS (9:16 SPLIT ERGONOMICS)
+        // ============================================================================
+        function cyclePassageSize() {
+            passageSizeMode = (passageSizeMode + 1) % 3;
+            const body = document.getElementById('passage-body');
+            const label = document.getElementById('passage-size-label');
+
+            if (passageSizeMode === 0) {
+                body.style.maxHeight = '18dvh';
+                label.textContent = 'Ringkas';
+            } else if (passageSizeMode === 1) {
+                body.style.maxHeight = '29dvh';
+                label.textContent = 'Sederhana';
+            } else {
+                body.style.maxHeight = '45dvh';
+                label.textContent = 'Luas';
+            }
+        }
+
+        function changeFontSize(delta) {
+            currentFontSize = Math.min(18.5, Math.max(12, currentFontSize + delta));
+            document.getElementById('passage-body').style.fontSize = currentFontSize + 'px';
+        }
+
+        // ============================================================================
+        // RENDER PASSAGE, SINGLE QUESTION & NAVIGATOR
+        // ============================================================================
+        function renderQuestionNavigator() {
+            const navGrid = document.getElementById('question-nav-grid');
+            document.getElementById('current-q-indicator').textContent = `SOALAN ${currentQuestionIndex + 1} / 15`;
+
+            navGrid.innerHTML = QUIZ_QUESTIONS.map((q, idx) => {
+                const answered = userAnswers[idx] !== null;
+                const isCurrent = idx === currentQuestionIndex;
+
+                let colorClass = answered
+                    ? 'bg-cyan-500 text-slate-950 border-cyan-300 font-black'
+                    : 'bg-slate-950 text-slate-400 border-slate-800 hover:border-cyan-500/50';
+
+                if (isSubmitted) {
+                    const isCorrect = userAnswers[idx] === q.correctIndex;
+                    colorClass = isCorrect
+                        ? 'bg-emerald-500 text-slate-950 border-emerald-300 font-black'
+                        : 'bg-rose-600 text-white border-rose-400 font-black';
+                }
+
+                const activeRing = isCurrent ? 'ring-2 ring-yellow-400 scale-105 z-10' : '';
+
+                return `
+                    <button onclick="goToQuestion(${idx})" 
+                        class="h-6 rounded-md text-[11px] font-bold border transition active:scale-90 flex items-center justify-center ${colorClass} ${activeRing}">
+                        ${idx + 1}
+                    </button>
+                `;
+            }).join('');
+        }
+
+        function goToQuestion(index) {
+            currentQuestionIndex = index;
+            renderAll();
+            document.getElementById('passage-body').scrollTop = 0;
+            document.getElementById('questions-scroll-area').scrollTop = 0;
+        }
+
+        function navigateQuestion(delta) {
+            const nextIdx = currentQuestionIndex + delta;
+            if (nextIdx >= 0 && nextIdx < QUIZ_QUESTIONS.length) {
+                goToQuestion(nextIdx);
+            }
+        }
+
+        function updateBottomNavButtons() {
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+
+            prevBtn.disabled = currentQuestionIndex === 0;
+
+            if (currentQuestionIndex === QUIZ_QUESTIONS.length - 1) {
+                nextBtn.innerHTML = `<span>Kembali ke S1</span>`;
+                nextBtn.onclick = () => goToQuestion(0);
+            } else {
+                nextBtn.innerHTML = `
+                    <span>Soalan ${currentQuestionIndex + 2}</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                    </svg>
+                `;
+                nextBtn.onclick = () => navigateQuestion(1);
+            }
+        }
+
+        function renderCurrentPassage() {
+            const q = QUIZ_QUESTIONS[currentQuestionIndex];
+            document.getElementById('passage-badge').textContent = `PETIKAN ${q.id}`;
+            document.getElementById('passage-type-badge').textContent = `${q.passageType}: ${q.passageTitle}`;
+
+            const passageContainer = document.getElementById('dynamic-passage-container');
+            passageContainer.innerHTML = `
+                <div class="border-b border-slate-800 pb-1.5 mb-2 flex items-center justify-between">
+                    <span class="font-cyber text-[9px] font-bold uppercase tracking-wider bg-cyan-950 text-cyan-300 border border-cyan-500/40 px-2 py-0.5 rounded">
+                        ${q.passageType}
+                    </span>
+                    <span class="text-[10px] font-semibold text-slate-400">Baca petikan dengan teliti</span>
+                </div>
+                <h2 class="font-extrabold text-sm text-yellow-300 leading-snug mb-1.5">${q.passageTitle}</h2>
+                <div class="text-slate-100 leading-relaxed">
+                    ${q.passageHtml}
+                </div>
+            `;
+        }
+
+        function renderCurrentQuestion() {
+            const container = document.getElementById('questions-container');
+            const qIndex = currentQuestionIndex;
+            const q = QUIZ_QUESTIONS[qIndex];
+            const selectedOpt = userAnswers[qIndex];
+
+            const optionsHTML = q.options.map((optText, oIndex) => {
+                const isSelected = selectedOpt === oIndex;
+                let cardStyle = "bg-slate-900/90 border-slate-800 text-slate-200 hover:border-cyan-400/60 hover:bg-slate-900";
+                let badgeStyle = "bg-slate-950 text-cyan-300 border-slate-700";
+                let statusIcon = "";
+
+                if (!isSubmitted && isSelected) {
+                    cardStyle = "bg-cyan-950/80 border-cyan-400 text-white ring-2 ring-cyan-400/30 font-bold neon-cyan-glow";
+                    badgeStyle = "bg-cyan-400 text-slate-950 border-cyan-300";
+                } else if (isSubmitted) {
+                    if (oIndex === q.correctIndex) {
+                        cardStyle = "bg-emerald-950/90 border-emerald-400 text-emerald-100 font-bold";
+                        badgeStyle = "bg-emerald-400 text-slate-950 border-emerald-300";
+                        statusIcon = `<span class="text-emerald-400 font-extrabold text-xs ml-auto shrink-0">✓ TEPAT</span>`;
+                    } else if (isSelected && oIndex !== q.correctIndex) {
+                        cardStyle = "bg-rose-950/90 border-rose-500 text-rose-100 font-semibold";
+                        badgeStyle = "bg-rose-500 text-white border-rose-400";
+                        statusIcon = `<span class="text-rose-400 font-extrabold text-xs ml-auto shrink-0">✕ SALAH</span>`;
+                    } else {
+                        cardStyle = "bg-slate-950/60 border-slate-800/80 text-slate-500 opacity-65";
+                    }
+                }
+
+                const letter = ["A", "B", "C", "D"][oIndex];
+                const cleanText = optText.replace(/^[A-D]\.\s*/, '');
+
+                return `
+                    <button type="button"
+                        onclick="selectOption(${qIndex}, ${oIndex})"
+                        ${isSubmitted ? 'disabled' : ''}
+                        class="option-card w-full text-left p-3 rounded-xl border-2 flex items-start gap-2.5 text-xs leading-snug ${cardStyle}">
+                        <span class="font-cyber w-6 h-6 rounded-lg border text-xs font-black flex items-center justify-center shrink-0 mt-0.5 ${badgeStyle}">
+                            ${letter}
+                        </span>
+                        <span class="flex-1">${cleanText}</span>
+                        ${statusIcon}
+                    </button>
+                `;
+            }).join('');
+
+            let explanationHTML = "";
+            if (isSubmitted) {
+                const isCorrect = selectedOpt === q.correctIndex;
+                explanationHTML = `
+                    <div class="mt-3 p-3 rounded-xl text-xs leading-relaxed ${isCorrect ? 'bg-emerald-950/80 border border-emerald-500/50 text-emerald-200' : 'bg-amber-950/80 border border-yellow-500/50 text-amber-200'}">
+                        <div class="font-extrabold mb-0.5 text-yellow-300">
+                            ${isCorrect ? '⚡ SYABAS! Jawapan anda tepat.' : `💡 JAWAPAN SEBENAR: ${["A", "B", "C", "D"][q.correctIndex]}`}
+                        </div>
+                        <p>${q.explanation}</p>
+                    </div>
+                `;
+            }
+
+            container.innerHTML = `
+                <article id="question-card-${qIndex}" class="bg-slate-900/95 rounded-2xl p-4 shadow-lg border border-cyan-500/30 transition">
+                    <div class="flex items-center justify-between gap-2 mb-2.5">
+                        <span class="font-cyber inline-flex items-center gap-1.5 text-[10px] font-black text-slate-950 bg-cyan-400 px-2.5 py-0.5 rounded-md uppercase">
+                            SOALAN ${q.id} / 15
+                        </span>
+                        <span class="text-[11px] font-bold text-fuchsia-300 bg-fuchsia-950/80 border border-fuchsia-500/40 px-2 py-0.5 rounded-md">
+                            ${q.category}
+                        </span>
+                    </div>
+                    <h4 class="text-sm font-bold text-white leading-snug mb-3 select-text">
+                        ${q.question}
+                    </h4>
+                    <div class="space-y-2">
+                        ${optionsHTML}
+                    </div>
+                    ${explanationHTML}
+                </article>
+            `;
+        }
+
+        function selectOption(qIndex, oIndex) {
+            if (isSubmitted) return;
+            userAnswers[qIndex] = oIndex;
+            renderCurrentQuestion();
+            renderQuestionNavigator();
+            updateProgressUI();
+        }
+
+        function updateProgressUI() {
+            const answeredCount = userAnswers.filter(a => a !== null).length;
+            const total = QUIZ_QUESTIONS.length;
+            const pct = Math.round((answeredCount / total) * 100);
+
+            document.getElementById('progress-counter').textContent = `${answeredCount} / ${total}`;
+            document.getElementById('progress-bar').style.width = `${pct}%`;
+        }
+
+        // ============================================================================
+        // AUTO-SUBMISSION TO GOOGLE SHEETS
+        // ============================================================================
+        async function handleSubmitQuiz() {
+            if (isSubmitted) {
+                document.getElementById('questions-scroll-area').scrollTo({ top: 0, behavior: 'smooth' });
+                return;
+            }
+
+            const { name: studentName, kelas: selectedClass } = getActiveStudentInfo();
+
+            if (!studentName) {
+                showToast("⚠️ Sila isi Nama Penuh anda di Muka Depan terlebih dahulu.", "warning");
+                openCoverScreen();
+                return;
+            }
+
+            const firstUnanswered = userAnswers.findIndex(a => a === null);
+            if (firstUnanswered !== -1) {
+                showToast(`⚠️ Soalan ${firstUnanswered + 1} masih belum dijawab!`, "warning");
+                goToQuestion(firstUnanswered);
+                return;
+            }
+
+            // Calculate Score
+            let correctCount = 0;
+            const letterAnswers = [];
+            QUIZ_QUESTIONS.forEach((q, idx) => {
+                const ansIdx = userAnswers[idx];
+                const letter = ["A", "B", "C", "D"][ansIdx];
+                const isRight = ansIdx === q.correctIndex;
+                if (isRight) correctCount++;
+                letterAnswers.push(`${letter} (${isRight ? 'Betul' : 'Salah'})`);
+            });
+
+            const percentage = Math.round((correctCount / QUIZ_QUESTIONS.length) * 100);
+            isSubmitted = true;
+
+            // Lock UI & Show Results
+            renderAll();
+
+            const submitBtn = document.getElementById('submit-btn');
+            submitBtn.innerHTML = `<span>KEPUTUSAN</span>`;
+
+            const summaryCard = document.getElementById('result-summary-card');
+            summaryCard.classList.remove('hidden');
+            document.getElementById('result-student-display').textContent = `${studentName} (${selectedClass})`;
+            document.getElementById('result-score-number').textContent = `${correctCount} / 15`;
+            document.getElementById('result-percentage').textContent = `${percentage}%`;
+
+            let gradeLabel = "TERUSKAN USAHA 💪";
+            if (correctCount >= 13) gradeLabel = "CEMERLANG 🌟";
+            else if (correctCount >= 10) gradeLabel = "KEPUJIAN 👍";
+            else if (correctCount >= 7) gradeLabel = "MEMUASKAN ✅";
+            document.getElementById('result-grade-badge').textContent = `TAHAP: ${gradeLabel}`;
+
+            document.getElementById('questions-scroll-area').scrollTo({ top: 0, behavior: 'smooth' });
+
+            const payload = {
+                masa: new Date().toLocaleString('ms-MY'),
+                nama: studentName,
+                kelas: selectedClass,
+                markah: correctCount,
+                jumlahSoalan: 15,
+                peratus: percentage,
+                jawapan: letterAnswers
+            };
+
+            lastSubmittedPayload = payload;
+            saveRecordLocally(payload);
+            await sendToGoogleSheets(payload);
+        }
+
+        async function sendToGoogleSheets(payload) {
+            const syncStatusEl = document.getElementById('result-sync-status');
+            const retryBtn = document.getElementById('retry-sync-btn');
+            const webhookUrl = getActiveSheetsUrl();
+
+            if (!webhookUrl) {
+                syncStatusEl.innerHTML = `📌 Markah disimpan dalam peranti.`;
+                retryBtn.classList.add('hidden');
+                showToast(`🎉 Misi Selesai! Markah anda: ${payload.markah}/15 (${payload.peratus}%).`, "success");
+                return;
+            }
+
+            syncStatusEl.innerHTML = `⏳ Sedang mengisi markah secara automatik ke Google Sheets...`;
+            retryBtn.classList.add('hidden');
+
+            try {
+                await fetch(webhookUrl, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: {
+                        'Content-Type': 'text/plain;charset=utf-8'
+                    },
+                    body: JSON.stringify(payload)
+                });
+
+                syncStatusEl.innerHTML = `✅ Markah & jawapan S1–S15 telah diisi secara automatik ke Google Sheets!`;
+                showToast(`✅ Markah ${payload.markah}/15 berjaya direkodkan ke Google Sheets!`, "success");
+            } catch (err) {
+                syncStatusEl.innerHTML = `⚠️ Sambungan internet terganggu. Klik 'Hantar Semula ke Sheets' di bawah.`;
+                retryBtn.classList.remove('hidden');
+                retryBtn.classList.add('inline-flex');
+                showToast(`⚠️ Gagal menghantar ke Sheets. Anda boleh tekan Hantar Semula.`, "warning");
+            }
+        }
+
+        async function retryLastSheetSync() {
+            if (!lastSubmittedPayload) return;
+            await sendToGoogleSheets(lastSubmittedPayload);
+        }
+
+        // ============================================================================
+        // RESET & COPY RESULT SLIP
+        // ============================================================================
+        function resetQuiz() {
+            userAnswers = new Array(QUIZ_QUESTIONS.length).fill(null);
+            currentQuestionIndex = 0;
+            isSubmitted = false;
+
+            document.getElementById('result-summary-card').classList.add('hidden');
+            document.getElementById('submit-btn').innerHTML = `
+                <span>HANTAR</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                </svg>
+            `;
+
+            renderAll();
+            openCoverScreen();
+            showToast("🔄 Sedia untuk misi seterusnya!", "info");
+        }
+
+        function copyResultSummary() {
+            const { name, kelas } = getActiveStudentInfo();
+            const scoreText = document.getElementById('result-score-number').textContent;
+            const pctText = document.getElementById('result-percentage').textContent;
+
+            const slip = `⚡ *SLIP KEPUTUSAN PEMAHAMAN BM (${kelas.toUpperCase()})*\n` +
+                         `👤 Nama Ejen: ${name}\n` +
+                         `🏫 Kelas: ${kelas}\n` +
+                         `🏆 Markah: ${scoreText} (${pctText})\n` +
+                         `🕒 Masa: ${new Date().toLocaleString('ms-MY')}`;
+
+            copyTextToClipboard(slip, "📋 Slip markah berjaya disalin!");
+        }
+
+        // ============================================================================
+        // TEACHER MODAL & LOCAL STORAGE RECORDS (TERSEMBUNYI UNTUK MURID)
+        // ============================================================================
+        function openTeacherModal() {
+            document.getElementById('teacher-modal').classList.remove('hidden');
+            renderLocalRecords();
+        }
+
+        function closeTeacherModal() {
+            document.getElementById('teacher-modal').classList.add('hidden');
+        }
+
+        function switchTeacherTab(tabName) {
+            ['link', 'code', 'records'].forEach(t => {
+                const content = document.getElementById(`teacher-tab-${t}`);
+                const btn = document.getElementById(`tab-btn-${t}`);
+                if (t === tabName) {
+                    content.classList.remove('hidden');
+                    btn.className = "py-1.5 rounded-lg bg-cyan-400 text-slate-950 font-extrabold";
+                } else {
+                    content.classList.add('hidden');
+                    btn.className = "py-1.5 rounded-lg text-slate-400 hover:text-white";
+                }
+            });
+        }
+
+        function saveSheetsUrl() {
+            const url = document.getElementById('sheets-webhook-url').value.trim();
+            localStorage.setItem('bm_6ibnusina_sheets_url', url);
+            updateSheetBadgeUI();
+            if (url) {
+                showToast("✅ URL Auto-Sheets berjaya disimpan!", "success");
+            } else {
+                showToast("ℹ️ URL dikosongkan.", "info");
+            }
+        }
+
+        async function testSheetsConnection() {
+            const url = document.getElementById('sheets-webhook-url').value.trim();
+            if (!url) {
+                showToast("⚠️ Sila masukkan URL Web App Google Apps Script dahulu.", "warning");
+                return;
+            }
+            localStorage.setItem('bm_6ibnusina_sheets_url', url);
+            updateSheetBadgeUI();
+
+            const samplePayload = {
+                masa: new Date().toLocaleString('ms-MY'),
+                nama: "Murid Ujian Cyber (6 Ibnu Sina)",
+                kelas: "6 Ibnu Sina",
+                markah: 15,
+                peratus: 100,
+                jawapan: Array(15).fill("A (Betul)")
+            };
+
+            showToast("⏳ Menguji penghantaran automatik ke Google Sheets...", "info");
+            try {
+                await fetch(url, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                    body: JSON.stringify(samplePayload)
+                });
+                showToast("✅ Data ujian dihantar! Sila semak Google Sheets anda.", "success");
+            } catch (e) {
+                showToast("⚠️ Gagal menghantar ujian.", "warning");
+            }
+        }
+
+        function copyAppsScriptCode() {
+            const code = `function doPost(e) {
+  var lock = LockService.getScriptLock();
+  lock.tryLock(10000);
+  try {
+    var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+    var raw = e.postData ? e.postData.contents : "{}";
+    var data = JSON.parse(raw);
+
+    if (sheet.getLastRow() === 0) {
+      var headers = ["Tarikh & Masa", "Nama Murid", "Kelas", "Markah", "Peratus (%)"];
+      for (var i = 1; i <= 15; i++) { headers.push("S" + i); }
+      sheet.appendRow(headers);
+    }
+
+    var row = [
+      new Date(),
+      data.nama || "Tanpa Nama",
+      data.kelas || "6 Ibnu Sina",
+      (data.markah !== undefined ? data.markah : 0) + " / 15",
+      (data.peratus !== undefined ? data.peratus : 0) + "%"
+    ];
+
+    var jawapan = data.jawapan || [];
+    for (var j = 0; j < 15; j++) {
+      row.push(jawapan[j] || "-");
+    }
+
+    sheet.appendRow(row);
+    return ContentService.createTextOutput(JSON.stringify({status: "success"}))
+      .setMimeType(ContentService.MimeType.JSON);
+  } finally {
+    lock.releaseLock();
+  }
+}`;
+            copyTextToClipboard(code, "📋 Kod Google Apps Script berjaya disalin!");
+        }
+
+        function getLocalRecords() {
+            try {
+                return JSON.parse(localStorage.getItem('bm_6ibnusina_records') || '[]');
+            } catch (e) {
+                return [];
+            }
+        }
+
+        function saveRecordLocally(record) {
+            const records = getLocalRecords();
+            records.unshift(record);
+            localStorage.setItem('bm_6ibnusina_records', JSON.stringify(records));
+            renderLocalRecords();
+        }
+
+        function renderLocalRecords() {
+            const records = getLocalRecords();
+            document.getElementById('local-record-count').textContent = records.length;
+            const listEl = document.getElementById('local-records-list');
+
+            if (records.length === 0) {
+                listEl.innerHTML = `
+                    <div class="text-center py-6 bg-slate-950 rounded-xl border border-dashed border-slate-800 text-slate-500">
+                        Belum ada rekod hantaran.
+                    </div>
+                `;
+                return;
+            }
+
+            listEl.innerHTML = records.map((r) => `
+                <div class="p-2.5 bg-slate-950 rounded-xl border border-slate-800 flex items-center justify-between">
+                    <div>
+                        <p class="font-extrabold text-white">${r.nama} <span class="text-cyan-400 font-semibold">(${r.kelas})</span></p>
+                        <p class="text-[10px] text-slate-500">${r.masa}</p>
+                    </div>
+                    <div class="text-right">
+                        <span class="px-2 py-0.5 bg-cyan-950 text-cyan-300 border border-cyan-500/40 font-extrabold rounded-lg text-xs">${r.markah}/15</span>
+                        <span class="block text-[10px] font-bold text-yellow-400 mt-0.5">${r.peratus}%</span>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function exportRecordsCSV() {
+            const records = getLocalRecords();
+            if (records.length === 0) {
+                showToast("⚠️ Tiada rekod.", "warning");
+                return;
+            }
+
+            const headers = ["Masa", "Nama Murid", "Kelas", "Markah", "Peratus"];
+            for (let i = 1; i <= 15; i++) headers.push(`S${i}`);
+
+            const rows = records.map(r => {
+                const base = [
+                    `"${r.masa}"`,
+                    `"${(r.nama || '').replace(/"/g, '""')}"`,
+                    `"${(r.kelas || '').replace(/"/g, '""')}"`,
+                    `"${r.markah}/15"`,
+                    `"${r.peratus}%"`
+                ];
+                const ans = (r.jawapan || []).map(a => `"${a}"`);
+                return base.concat(ans).join(",");
+            });
+
+            const csvContent = "data:text/csv;charset=utf-8,\uFEFF" + [headers.join(","), ...rows].join("\n");
+            const encodedUri = encodeURI(csvContent);
+            const link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", `Markah_CyberBM_6_Ibnu_Sina.csv`);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            showToast("⬇️ Fail CSV berjaya dimuat turun!", "success");
+        }
+
+        function clearLocalRecords() {
+            localStorage.removeItem('bm_6ibnusina_records');
+            renderLocalRecords();
+            showToast("🗑️ Rekod dipadam.", "info");
+        }
+
+        function copyTextToClipboard(text, successMsg) {
+            const textArea = document.createElement("textarea");
+            textArea.value = text;
+            textArea.style.position = "fixed";
+            textArea.style.left = "-9999px";
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            try {
+                document.execCommand('copy');
+                showToast(successMsg, "success");
+            } catch (err) {
+                showToast("⚠️ Gagal menyalin.", "warning");
+            }
+            document.body.removeChild(textArea);
+        }
+
+        let toastTimeout = null;
+        function showToast(message, type = "info") {
+            const toast = document.getElementById('toast-notification');
+            const icon = document.getElementById('toast-icon');
+            const msg = document.getElementById('toast-message');
+
+            icon.textContent = type === "success" ? "✅" : type === "warning" ? "⚠️" : "⚡";
+            msg.textContent = message;
+            toast.classList.remove('hidden');
+
+            if (toastTimeout) clearTimeout(toastTimeout);
+            toastTimeout = setTimeout(() => {
+                hideToast();
+            }, 3800);
+        }
+
+        function hideToast() {
+            document.getElementById('toast-notification').classList.add('hidden');
+        }
+    </script>
+</body>
+</html>
